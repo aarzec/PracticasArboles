@@ -16,6 +16,10 @@ int main () {
     nodo1->setDerecha(nodo3);
     nodo4->setDerecha(nodo5);
 
+    // Inserción
+    Nodo::insertar(raiz, 10);
+    Nodo::insertar(raiz, 3);
+
     // Recorridos
     std::cout << "In-orden:\n";
     Nodo::recorrerInOrden(raiz);

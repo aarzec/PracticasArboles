@@ -31,6 +31,14 @@ void Nodo::setDerecha(Nodo* nodo) {
     derecha = nodo;
 }
 
+Nodo* Nodo::getPadre() {
+    return derecha;
+}
+
+void Nodo::setPadre(Nodo* nodo) {
+    derecha = nodo;
+}
+
 void Nodo::recorrerInOrden(Nodo* nodo) {
     if (nodo == nullptr) {
         return;
@@ -61,4 +69,23 @@ void Nodo::recorrerPostOrden(Nodo* nodo) {
     std::cout << nodo->getValor() << " ";
 }
 
-
+void Nodo::insertar(Nodo *nodo, int val) {
+    Nodo* nodoInsertar;
+    if (val < nodo->getValor()) {
+        nodoInsertar = nodo->getIzquierda();
+        if (nodoInsertar == nullptr) {
+            nodoInsertar = new Nodo(val);
+            nodo->setIzquierda(nodoInsertar);
+        } else {
+            insertar(nodoInsertar, val);
+        }
+    } else {
+        nodoInsertar = nodo->getDerecha();
+        if (nodoInsertar == nullptr) {
+            nodoInsertar = new Nodo(val);
+            nodo->setDerecha(nodoInsertar);
+        } else {
+            insertar(nodoInsertar, val);
+        }
+    }
+}
